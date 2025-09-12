@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<main>
+    <lang>
+        <string key="button_Start">Start Game</string>
+        <string key="button_Settings">Options</string>
+        <string key="button_HowToPlay">Learn to Play</string>
+        <string key="button_Achievement">Achievements</string>
+        <string key="button_ExitGame">Exit Game</string>
+        <!--Settings-->
+        <string key="text_Audio">Audio</string>
+        <string key="text_Graficos">Graphics and Language</string>
+        <!--Settings/Audio-->
+        <string key="button_GeneralMusic">Master Volume</string>
+        <string key="button_Musica">Music Volume</string>
+        <string key="button_SFX">Effects Volume</string>
+        <string key="text_GeneralMusic">Adjust the overall game volume.</string>
+        <string key="text_Musica">Adjust the music volume.</string>
+        <string key="text_SFX">Adjust the sound effects volume.</string>
+        <!--Settings/Graphics and Language-->
+        <string key="button_Idioma">Language</string>
+        <string key="option_IdiomaI">Spanish</string>
+        <string key="option_IdiomaII">English</string>
+        <string key="button_Graficos">Graphics</string>
+        <string key="option_GraficosI">High</string>
+        <string key="option_GraficosII">Medium</string>
+        <string key="option_GraficosIII">Low</string>
+        <string key="button_Resolucion">Resolution</string>
+        <string key="text_Idioma">You can choose between Spanish or English to play in your preferred language.</string>
+        <string key="text_Graficos">Adjust the graphics to what makes you feel most comfortable while playing.</string>
+        <string key="text_Resolucion">Adjust the resolution to what makes you feel most comfortable while playing.</string>
+        <!--How to Play-->
+        <string key="text_Movimiento">Movement</string>
+        <string key="text_Agacharse">Crouch</string>
+        <string key="text_Interaccion">Interact</string>
+        <string key="text_Saltar">Jump</string>
+        <string key="text_Mapa">Minimap / Map</string>
+        <string key="text_Linterna">Turn on / off flashlight</string>
+        <string key="text_Quest">Open quest list</string>
+        <!--Achievements-->
+        <string key="logroI">You Did It!</string>
+        <string key="logroII">Master Solver</string>
+        <string key="logroIII">Quick and Clever</string>
+        <string key="logroIV">Infinite Patience</string>
+        <string key="logroV">Total Challenge</string>
+        <string key="logroVI">Challenge Completed</string>
+        <string key="logro1DDescripcion">Complete your first mission</string>
+        <string key="logroIIDescripcion">Complete a mission without errors</string>
+        <string key="logroIIIDescripcion">Solve a puzzle in less than ten minutes</string>
+        <string key="logroIVDescripcion">Play for thirty minutes without leaving</string>
+        <string key="logroVDescripcion">Complete all missions in a single attempt</string>
+        <string key="logroVIDescripcion">Solve all puzzles without getting caught</string>
+        <!--Pause Menu-->
+        <string key="button_Back">Back</string>
+        <string key="button_Reanude">Resume Game</string>
+        <string key="button_Restar">Restart Game</string>
+        <!--Game-->
+        <string key="StartGame">Remember, as they told you, you need to go to your left to find a merchant</string>
+        <string key="Welcome_text">Hello, sir. Can you help me?</string>
+        <string key="text_quest1">I need you to get 3 objects: 1 garlic, a lemon, and a tomato. Then leave them on that scale in the middle</string>
+        <string key="text_quest2">In that park, you'll find 3 fountains. Look near the notes that are close, and something will appear in the middle</string>
+        <string key="help_quest2">The chest in the center of the park has everything you're looking for right now</string>
+        <string key="text_quest3">You obtained the final piece, now go to the merchant to get closer to the truth</string>
+        <string key="text_quest4">Will you be able to handle the truth?</string>
+        <string key="text_end">Impossible, it was you all along</string>
+        <!--Others-->
+        <string key="text_limit">For now, it is locked. Open the map and follow the clues</string>
+        <string key="text_ajo">You obtained a garlic</string>
+        <string key="text_tomate">You obtained a tomato</string>
+        <string key="text_limon">You obtained a lemon</string>
+    </lang>
+</main>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<main>
+    <lang>
+        <string key="button_Start">Iniciar Partida</string>
+        <string key="button_Settings">Opciones</string>
+        <string key="button_HowToPlay">Aprende a jugar</string>
+        <string key="button_Achievement">Logros</string>
+        <string key="button_ExitGame">Salir del juego</string>
+        <!--Settings-->
+        <string key="text_Audio">Audio</string>
+        <string key="text_Graficos">Gráficos y lenguaje</string>
+        <!--Settings/Audio-->
+        <string key="button_GeneralMusic">Volúmen general</string>
+        <string key="button_Musica">Volúmen de la música</string>
+        <string key="button_SFX">Volumen de los efectos</string>
+        <string key="text_GeneralMusic">Ajusta el volúmen general del juego.</string>
+        <string key="text_Musica">Ajusta el volúmen general de la música.</string>
+        <string key="text_SFX">Ajusta el volúmen de los efectos de sonido.</string>
+        <!--Settings/Graficos y lenguaje-->
+        <string key="button_Idioma">Idioma</string>
+        <string key="option_IdiomaI">Español</string>
+        <string key="option_IdiomaII">Inglés</string>
+        <string key="button_Graficos">Gráficos</string>
+        <string key="option_GraficosI">Alto</string>
+        <string key="option_GraficosII">Medio</string>
+        <string key="option_GraficosIII">Bajo</string>
+        <string key="button_Resolucion">Resolucción</string>
+        <string key="text_Idioma">Puedes elegir entre español o inglés para jugar en tu idioma preferido.</string>
+        <string key="text_Graficos">Ajusta el gráfico con el que te sientas más cómodo al jugar.</string>
+        <string key="text_Resolucion">Ajusta la resolución con el que te sientas más cómodo al jugar.</string>
+        <!--Como jugar-->
+        <string key="text_Movimiento">Movimiento</string>
+        <string key="text_Agacharse">Agacharse</string>
+        <string key="text_Interaccion">Interactuar</string>
+        <string key="text_Saltar">Saltar</string>
+        <string key="text_Mapa">Minimapa / mapa</string>
+        <string key="text_Linterna">Encender / apagar linterna</string>
+        <string key="text_Quest">Abrir lista de misiones</string>
+        <!--Logros-->
+        <string key="logroI">¡Lo lograste!</string>
+        <string key="logroII">Maestro Solución</string>
+        <string key="logroIII">Rápido y astuto</string>
+        <string key="logroIV">Paciencia infinita</string>
+        <string key="logroV">Desafío Total</string>
+        <string key="logroVI">Reto Completado</string>
+        <string key="logro1DDescripcion">Completa tu primera misión</string>
+        <string key="logroIIDescripcion">Completa una misión sin errores</string>
+        <string key="logroIIIDescripcion">Resuelve un puzzle en menos de diez min</string>
+        <string key="logroIVDescripcion">Juega durante treinta minutos sin abandonar</string>
+        <string key="logroVDescripcion">Completa todas las misiones en un solo intento</string>
+        <string key="logroVIDescripcion">Resuelve todos los puzzles sin que te atrapen</string>
+        <!--Menú de pausa-->
+        <string key="button_Back">Regresar</string>
+        <string key="button_Reanude">Reanudar juego</string>
+        <string key="button_Restar">Reinciar juego</string>
+        <!--Game-->
+        <string key="StartGame">Recuerda como te comentaron tienes que llegar a tu izquierda en busca de un mercader</string>
+        <string key="Welcome_text">Hola caballero, ¿me podría ayudar?</string>
+        <string key="text_quest1">Necesito que me consiga 3 objetos: 1 ajo, un limón y un tomate. Luego déjalos en esa pesa del medio</string>
+        <string key="text_quest2">En ese parque encontrarás 3 fuentes, busca en las notas que están cerca y aparecerá algo en el centro del mismo</string>
+        <string key="help_quest2">El cofre que está en el centro del parque tiene todo lo que estás buscando ahora
+            mismo
+        </string>
+        
+        <string key="text_quest3">Obtuviste la pieza final, ahora dirígete al mercader para acercarte más a la verdad </string>
+        <string key="text_quest4">¿Serás capaz de lidiar con la verdad?</string>
+        
+        <string key="text_end">Imposible, eras tú todo este tiempo</string>
+        <!--Others-->
+        <string key="text_limit">De momento está bloqueado, abrá el mapa y siga las pistas</string>
+        <string key="text_ajo">Ha obtenido un ajo</string>
+        <string key="text_tomate">Ha obtenido un tomate</string>
+        <string key="text_limon">Ha obtenido un limón</string>
+    </lang>
+</main>

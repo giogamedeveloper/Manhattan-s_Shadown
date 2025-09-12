@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8017064194095074613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1344645380281813247}
+  - component: {fileID: 2091280533973810656}
+  - component: {fileID: 3526519382740201590}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1344645380281813247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017064194095074613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2091280533973810656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017064194095074613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7230a46ccd2a7e941b25d0ef39ab85e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    currentScene: 
+    entrancePosition: 
+    allConditions:
+    - idQuest: Q1
+      idSubQuest: SQ1
+      description: "Toma un lim\xF3n, papa y ajo de la escena"
+      isDone: 0
+    - idQuest: Q1
+      idSubQuest: SQ2
+      description: "Habla con un NPC completa la primera misi\xF3n"
+      isDone: 0
+    - idQuest: Q2
+      idSubQuest: SQ1
+      description: Buscar las notas en las tres fuentes
+      isDone: 0
+    - idQuest: Q2
+      idSubQuest: SQ2
+      description: "Abre el ba\xFAl con el c\xF3digo"
+      isDone: 0
+    - idQuest: Q3
+      idSubQuest: SQ1
+      description: Realiza el puzzle para desenmascarar a Lombardi
+      isDone: 0
+    allItems:
+    - name: Ajo
+      description: 
+      imageName: Ajo
+      _isPicked: 0
+    - name: Lemon
+      description: 
+      imageName: Lemon
+      _isPicked: 0
+    - name: Tomate
+      description: 
+      imageName: Tomate
+      _isPicked: 0
+    - name: Piece
+      description: 
+      imageName: Piece
+      _isPicked: 0
+    inventory:
+    - name: 
+      description: 
+      imageName: 
+      _isPicked: 0
+    - name: 
+      description: 
+      imageName: 
+      _isPicked: 0
+    - name: 
+      description: 
+      imageName: 
+      _isPicked: 0
+    - name: 
+      description: 
+      imageName: 
+      _isPicked: 0
+    statistics:
+    - code: Mision
+      value: 0
+    - code: Errores
+      value: 0
+    - code: Tiempo
+      value: 0
+    - code: Tiempo_de_partida
+      value: 0
+    - code: Atrapar
+      value: 0
+    achievements:
+    - name: "\xA1Lo lograste!"
+      statCode: Mision
+      imageName: Mision
+      imageNameBase: MisionBase
+      description: "Completa tu primera misi\xF3n"
+      targetAmount: 1
+      unlocked: 0
+    - name: "Maestro Soluci\xF3n"
+      statCode: Errores
+      imageName: NoErrors
+      imageNameBase: NoErrorsBase
+      description: Completa una mision sin errores
+      targetAmount: 1
+      unlocked: 0
+    - name: "R\xE1pido y astuto"
+      statCode: Tiempo
+      imageName: Time
+      imageNameBase: TimeBase
+      description: Resuelve un puzzle en menos de diez min
+      targetAmount: 1
+      unlocked: 0
+    - name: Paciencia infinita
+      statCode: Tiempo_de_partida
+      imageName: TimeToPlay
+      imageNameBase: TimeToPlayBase
+      description: Juega durante treinta minutos sin abandonar
+      targetAmount: 1
+      unlocked: 0
+    - name: "Desaf\xEDo Total"
+      statCode: Mision
+      imageName: AllMision
+      imageNameBase: AllMisionBase
+      description: Completa todos las misiones en un solo intento.
+      targetAmount: 1
+      unlocked: 0
+    - name: Reto Completado
+      statCode: Atrapar
+      imageName: Catched
+      imageNameBase: CatchedBase
+      description: Resuelve todos los puzzles sin que te atrapen
+      targetAmount: 1
+      unlocked: 0
+  fileName: save.dat
+--- !u!114 &3526519382740201590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017064194095074613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ebec57f356a654aa625cadb884aecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

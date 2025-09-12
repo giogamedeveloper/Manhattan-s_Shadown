@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ffb3c2f0ab38242bfca332688b2ecd, type: 3}
+  m_Name: NPCEnemy
+  m_EditorClassIdentifier: 
+  patrolSpeed: 0.5
+  attackSpeed: 2
+  reach: 10
+  timeToDisengage: 20
+  minAttackRange: 2
+  lookSphereCastRadius: 0.8
+  fieldOfView: 90
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  hearRange: 5
