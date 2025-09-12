@@ -26,7 +26,7 @@
 
 ## 🚀 Instalación
 
-1. Descarga la última versión desde [itch.io](https://tugame.itch.io/sombras-de-manhattan)
+1. Descarga la última versión desde [itch.io](https://giod3v.itch.io/sombras-de-manhattan)
 2. Descomprime el archivo ZIP
 3. Ejecuta `SombrasDeManhattan.exe`
 
