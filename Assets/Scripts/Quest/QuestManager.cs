@@ -18,6 +18,7 @@ public class QuestManager : MonoBehaviour
 
     public List<Quest> quests;
     private bool showQuests = false;
+    private Coroutine _showHideCoroutine;
 
     private static QuestManager _instance;
     public static QuestManager Instance => _instance;
@@ -34,21 +35,20 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void Start()
     {
-        // ShowHideCanvas();
+        quests ??= new List<Quest>();
+        LoadQuests();
     }
 
     public void CrearMision(string questID, string title, List<(string subQuestID, string description)> subQuestsData)
     {
         // Crear la nueva quest
-        Quest nuevaQuest = new Quest
-        {
-            title = title,
-            questID = questID,
-            subQuests = new List<SubQuest>(),
-            isCompleted = false
-        };
+        Quest nuevaQuest = ScriptableObject.CreateInstance<Quest>();
+        nuevaQuest.title = title;
+        nuevaQuest.questID = questID;
+        nuevaQuest.subQuests = new List<SubQuest>();
+        nuevaQuest.isCompleted = false;
 
         // Agregar las subquests
         foreach (var subQData in subQuestsData)
@@ -64,6 +64,7 @@ public class QuestManager : MonoBehaviour
         // Añadirla a la lista de quests
         quests.Add(nuevaQuest);
         PopulateQuestUI(); // Actualizar UI
+        SaveQuests();
     }
 
     public void ShowHideCanvas()
@@ -76,7 +77,9 @@ public class QuestManager : MonoBehaviour
         canvasGroup.interactable = showQuests;
 
         // Mostrar u ocultar las quests tras una demora
-        StartCoroutine(DelayToShowQuest(showQuests));
+        if (_showHideCoroutine != null)
+            StopCoroutine(_showHideCoroutine);
+        _showHideCoroutine = StartCoroutine(DelayToShowQuest(showQuests));
 
         // Animación UIS
         _canvasUIQuestAnimator.SetBool("ShowQuest", showQuests);
@@ -87,7 +90,7 @@ public class QuestManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToShow);
         questPanel.SetActive(show);
-        if (showQuests)
+        if (show)
         {
             PopulateQuestUI(); // Rellenar UI cuando se muestre
         }
@@ -129,6 +132,7 @@ public class QuestManager : MonoBehaviour
                         subQRef.isCompleted = true;
                         CheckQuestCompletion(quest);
                         PopulateQuestUI();
+                        SaveQuests();
                     });
                 }
             }
@@ -162,18 +166,23 @@ public class QuestManager : MonoBehaviour
 
     void SaveQuests()
     {
-        var questStates = quests.Select(q => new
+        QuestDataWrapper wrapper = new QuestDataWrapper
         {
-            title = q.title,
-            isCompleted = q.isCompleted,
-            subQuests = q.subQuests.Select(sq => new
+            quests = quests.Select(q => new QuestData
             {
-                description = sq.description,
-                isCompleted = sq.isCompleted
+                questID = q.questID,
+                title = q.title,
+                isCompleted = q.isCompleted,
+                subQuests = q.subQuests.Select(sq => new SubQuestData
+                {
+                    subQuestID = sq.subQuestID,
+                    description = sq.description,
+                    isCompleted = sq.isCompleted
+                }).ToList()
             }).ToList()
-        }).ToList();
+        };
 
-        string json = JsonUtility.ToJson(new { quests = questStates });
+        string json = JsonUtility.ToJson(wrapper);
         PlayerPrefs.SetString("questsData", json);
         PlayerPrefs.Save();
     }
@@ -184,14 +193,23 @@ public class QuestManager : MonoBehaviour
         {
             string json = PlayerPrefs.GetString("questsData");
             var data = JsonUtility.FromJson<QuestDataWrapper>(json);
+            if (data == null || data.quests == null) return;
             quests.Clear();
             foreach (var qData in data.quests)
             {
-                Quest q = new Quest()
-                    { title = qData.title, isCompleted = qData.isCompleted, subQuests = new List<SubQuest>() };
+                Quest q = ScriptableObject.CreateInstance<Quest>();
+                q.questID = qData.questID;
+                q.title = qData.title;
+                q.isCompleted = qData.isCompleted;
+                q.subQuests = new List<SubQuest>();
                 foreach (var sqData in qData.subQuests)
                 {
-                    q.subQuests.Add(new SubQuest() { description = sqData.description, isCompleted = sqData.isCompleted });
+                    q.subQuests.Add(new SubQuest()
+                    {
+                        subQuestID = sqData.subQuestID,
+                        description = sqData.description,
+                        isCompleted = sqData.isCompleted
+                    });
                 }
                 quests.Add(q);
             }

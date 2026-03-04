@@ -47,11 +47,15 @@ public class SceneController : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Fade(float targetAlpha)
     {
+        if (_faderCanvasGroup == null)
+        {
+            _isFading = false;
+            yield break;
+        }
         //Indicamos que se está produciendo un fade
         _isFading = true;
-        if (_faderCanvasGroup != null)
-            //Bloqueamos los raycast para evitar que el jugador interactue durante el proceso
-            _faderCanvasGroup.blocksRaycasts = true;
+        //Bloqueamos los raycast para evitar que el jugador interactue durante el proceso
+        _faderCanvasGroup.blocksRaycasts = true;
         float timeCounter = _fadeDuration;
         float initialAlpha = _faderCanvasGroup.alpha;
         while (timeCounter > 0)
@@ -99,7 +103,8 @@ public class SceneController : MonoBehaviour
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         //Para forzar el actualizado de los lightprobes de la escena
         LightProbes.Tetrahedralize();
-        AudioController.Instance.SetMusicForScene(sceneName);
+        if (AudioController.Instance != null)
+            AudioController.Instance.SetMusicForScene(sceneName);
         //Recuperamos la última escena cargada
         Scene newMyLoadedScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
         //Marcamos la escena como activa

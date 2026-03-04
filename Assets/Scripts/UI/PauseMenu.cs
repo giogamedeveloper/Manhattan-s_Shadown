@@ -25,6 +25,7 @@ public class PauseMenu : MonoBehaviour
         pauseCanvasGroup.gameObject.SetActive(isActive);
         pauseCanvasGroup.alpha = isActive ? 1 : 0;
         pauseCanvasGroup.interactable = isActive;
+        pauseCanvasGroup.blocksRaycasts = isActive;
         mapCanvasGroup.gameObject.SetActive(!isActive);
     }
 }

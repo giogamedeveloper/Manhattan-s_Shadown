@@ -17,12 +17,13 @@ public class PlayTimeTracker : MonoBehaviour
 
         elapsedTime += Time.deltaTime; // Suma el tiempo en segundos
 
-        if (elapsedTime >= minutesRequiredMision * 60f) // Si alcanzamos la cantidad de minutos requerida
+        if (!achievementUnlockedMision && elapsedTime >= minutesRequiredMision * 60f) // Si alcanzamos la cantidad de minutos requerida
         {
             achievementUnlockedMision = true; // Solo se activa una vez
             OnTimeToPlayMision?.Invoke();
         }
-        else if (elapsedTime >= minutesRequiredGame * 60f)
+
+        if (!achievementUnlockedGame && elapsedTime >= minutesRequiredGame * 60f)
         {
             achievementUnlockedGame = true;
             OnTimeToPlayGame?.Invoke();

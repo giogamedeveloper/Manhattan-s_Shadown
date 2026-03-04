@@ -99,13 +99,21 @@ public class AudioController : MonoBehaviour
 
     public void SetMusicForScene(string sceneName)
     {
+        AudioClip targetClip = null;
         if (sceneName == "MainMenu")
         {
-            musicAudioSource.clip = _menuMusic;
+            targetClip = _menuMusic;
         }
         else if (sceneName == "Game")
         {
-            musicAudioSource.clip = _gameMusic;
+            targetClip = _gameMusic;
+        }
+
+        if (targetClip != null && musicAudioSource.clip != targetClip)
+        {
+            musicAudioSource.clip = targetClip;
+            musicAudioSource.Play();
+            return;
         }
 
         if (!musicAudioSource.isPlaying)

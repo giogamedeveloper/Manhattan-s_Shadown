@@ -26,7 +26,8 @@ public class Interactable : MonoBehaviour
     private Transform _handle;
 
     [SerializeField]
-    private Collider collider;
+    [FormerlySerializedAs("collider")]
+    private Collider _triggerCollider;
 
     void OnTriggerEnter(Collider other)
     {
@@ -39,7 +40,10 @@ public class Interactable : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-        collider.isTrigger = true;
+        if (_triggerCollider == null)
+            _triggerCollider = GetComponent<Collider>();
+        if (_triggerCollider == null) return;
+        _triggerCollider.isTrigger = true;
     }
 
     public void Interact(PlayerInteract interactor = null)
@@ -52,21 +56,26 @@ public class Interactable : MonoBehaviour
         //Por defecto marcamos quye están cumplida todas las condiciones
         bool success = true;
         //Recorremos todasl las condiciones y las comprobamos
-        foreach (string conditionIdQuest in conditionsQuest)
+        int conditionsCount = Mathf.Min(conditionsQuest.Length, conditionsSubQuest.Length);
+        if (conditionsQuest.Length != conditionsSubQuest.Length)
         {
-            foreach (string conditionIdSubQuest in conditionsQuest)
-            {
+            Debug.LogWarning($"Interactable '{name}' tiene listas de condiciones desbalanceadas.");
+            success = false;
+        }
 
-                //Si alguna no se cumple, cambiamos el success a false y cortamos el bucle
-                if (!DataManager.Instance.CheckCondition(conditionIdQuest, conditionIdSubQuest))
-                {
-                    success = false;
-                    break;
-                }
+        for (int i = 0; i < conditionsCount; i++)
+        {
+            string conditionIdQuest = conditionsQuest[i];
+            string conditionIdSubQuest = conditionsSubQuest[i];
+            //Si alguna no se cumple, cambiamos el success a false y cortamos el bucle
+            if (!DataManager.Instance.CheckCondition(conditionIdQuest, conditionIdSubQuest))
+            {
+                success = false;
+                break;
             }
         }
         //Si se cumplen todas las condiciones y, además, el # de condiciones es mayor a 0, ejecutamos las condiciones positivas
-        if (success && conditionsQuest.Length > 0)
+        if (success && conditionsCount > 0)
         {
             QueueReaction(_positiveReactions);
         }

@@ -10,22 +10,24 @@ public class TranslateText : MonoBehaviour
 
     void OnEnable()
     {
-        TranslateManager.OnLanguageChanged += () => ChangeText();
+        TranslateManager.OnLanguageChanged += ChangeText;
     }
 
     void OnDisable()
     {
-        TranslateManager.OnLanguageChanged -= () => ChangeText();
+        TranslateManager.OnLanguageChanged -= ChangeText;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (TranslateManager.Instance == null) return;
         _textMesh.text = TranslateManager.Instance.GetText(_text);
     }
 
     public void ChangeText()
     {
+        if (TranslateManager.Instance == null) return;
         _textMesh.text = TranslateManager.Instance.GetText(_text);
     }
 }

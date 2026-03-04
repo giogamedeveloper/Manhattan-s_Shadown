@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour, IUIActions
     [SerializeField]
     TextMeshProUGUI dataTime;
 
-    public bool _isActive = true;
+    public bool _isActive = false;
 
     private static GameController _instance;
     public static GameController Instance => _instance;
@@ -105,6 +105,7 @@ public class GameController : MonoBehaviour, IUIActions
 
     public void TogglePause(bool value)
     {
+        _isActive = value;
         pauseMenu.SetPause(value);
     }
 
@@ -149,12 +150,12 @@ public class GameController : MonoBehaviour, IUIActions
 
     public void OnNavigate(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        // No requerido actualmente.
     }
 
     public void OnSubmit(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        // No requerido actualmente.
     }
 
     public void OnCancel(InputAction.CallbackContext context)
@@ -165,37 +166,37 @@ public class GameController : MonoBehaviour, IUIActions
 
     public void OnPoint(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        // No requerido actualmente.
     }
 
     public void OnClick(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        // No requerido actualmente.
     }
 
     public void OnRightClick(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        // No requerido actualmente.
     }
 
     public void OnMiddleClick(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        // No requerido actualmente.
     }
 
     public void OnScrollWheel(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        // No requerido actualmente.
     }
 
     public void OnTrackedDevicePosition(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        // No requerido actualmente.
     }
 
     public void OnTrackedDeviceOrientation(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        // No requerido actualmente.
     }
 
     public void OnInteract(InputAction.CallbackContext context)

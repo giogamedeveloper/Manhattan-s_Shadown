@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
@@ -23,10 +24,11 @@ public class DataManager : MonoBehaviour
             _instance = this;
             _dataPath = Application.persistentDataPath + "/" + fileName;
             Load();
+            EnsureDataInitialized();
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -34,26 +36,57 @@ public class DataManager : MonoBehaviour
     {
         //Si no existe el fichero, no hacemos nada
         if (!File.Exists(_dataPath)) return;
-        //Objeto utilizado para serializar/deserializar en binario
-        BinaryFormatter bf = new BinaryFormatter();
-        //abrimos el fichero para lectura
-        FileStream fs = File.Open(_dataPath, FileMode.Open);
-        //Deserializamos y volcamos la indo a nuestro objeto data
-        data = (Data)bf.Deserialize(fs);
-        //Una vez completada la operacion, cerramos el fichero
-        fs.Close();
+        try
+        {
+            string json = File.ReadAllText(_dataPath);
+            Data loadedData = JsonUtility.FromJson<Data>(json);
+            if (loadedData != null)
+            {
+                data = loadedData;
+                return;
+            }
+        }
+        catch (Exception)
+        {
+            // Intentamos cargar formato binario antiguo para no perder partidas viejas.
+        }
+
+#pragma warning disable SYSLIB0011
+        try
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            using FileStream fs = File.Open(_dataPath, FileMode.Open);
+            data = (Data)bf.Deserialize(fs);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning($"No se pudo cargar el archivo de guardado: {e.Message}");
+        }
+#pragma warning restore SYSLIB0011
     }
 
     public void Save()
     {
-        //Objeto utilizado para serializar/deserializar en binario
-        BinaryFormatter bf = new BinaryFormatter();
-        //Creamos el fichero de guardado
-        FileStream fs = File.Create(_dataPath);
-        //Serializamos el objeto data
-        bf.Serialize(fs, data);
-        //Una vez completada la operacion, cerramos el fichero
-        fs.Close();
+        EnsureDataInitialized();
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(_dataPath, json);
+    }
+
+    private void EnsureDataInitialized()
+    {
+        data ??= new Data();
+        data.allConditions ??= Array.Empty<Condition>();
+        data.allItems ??= Array.Empty<Item>();
+        data.statistics ??= Array.Empty<Stat>();
+        data.achievements ??= Array.Empty<Achievement>();
+
+        if (data.inventory == null || data.inventory.Length == 0)
+            data.inventory = new Item[4];
+
+        for (int i = 0; i < data.inventory.Length; i++)
+        {
+            data.inventory[i] ??= new Item();
+        }
     }
 
     /// <summary>

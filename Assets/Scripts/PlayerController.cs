@@ -299,7 +299,7 @@ public class PlayerController : MonoBehaviour, IPlayerActions
     {
         if (context.performed)
         {
-            bool pause = GameController.Instance._isActive;
+            bool pause = !GameController.Instance._isActive;
             GameController.Instance.TogglePause(pause);
         }
     }
