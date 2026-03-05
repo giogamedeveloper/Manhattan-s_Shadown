@@ -1229,7 +1229,7 @@ MonoBehaviour:
       multiplyValue: 1
   sunInitialRotation:
     m_OverrideState: 1
-    m_Value: -Infinity
+    m_Value: 0
   lockSun:
     m_OverrideState: 1
     m_Value: 0

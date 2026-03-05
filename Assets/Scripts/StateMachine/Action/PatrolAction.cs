@@ -32,7 +32,6 @@ public class PatrolAction : StateAction
             {
                 //En caso contrario elegimos el siguiente de la lista; mediante este truco con el módulo, Nos aseguramos de que no se desborde el índice de la lista.
                 controller.nextWayPoint = (controller.nextWayPoint + 1) % controller.wayPointsList.Count;
-                ;
             }
         }
     }
