@@ -14,22 +14,20 @@ public class DataManager : MonoBehaviour
 
     //Combinación de ruta mas nombre de fichero
     string _dataPath;
-    private static DataManager _instance;
-    public static DataManager Instance => _instance;
+    public static DataManager Instance { get; private set; }
 
     void Awake()
     {
-        if (_instance == null)
-        {
-            _instance = this;
-            _dataPath = Application.persistentDataPath + "/" + fileName;
-            Load();
-            EnsureDataInitialized();
-        }
-        else
+        if (Instance != this && Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        EnsureDataInitialized();
+        _dataPath = Application.persistentDataPath + "/" + fileName;
+        Load();
     }
 
     private void Load()
