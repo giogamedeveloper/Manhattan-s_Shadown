@@ -12,20 +12,20 @@ public class PlayerAudioAdapter : MonoBehaviour
 
     void OnEnable()
     {
-        player.OnStep += PlayStepSound;
-        player.OnLand += PlayLandSound;
-        player.OnHighLand += PlayHighLandSound;
-        player.OnJumped += PlayJumpSound;
-        player.OnCrouched += PlayCrouchSound;
+        player.Movement.OnStep += PlayStepSound;
+        player.Movement.OnLand += PlayLandSound;
+        player.Movement.OnHighLand += PlayHighLandSound;
+        player.Movement.OnJumped += PlayJumpSound;
+        // player.OnCrouched += PlayCrouchSound;
     }
 
     void OnDisable()
     {
-        player.OnStep -= PlayStepSound;
-        player.OnLand -= PlayLandSound;
-        player.OnHighLand -= PlayHighLandSound;
-        player.OnJumped -= PlayJumpSound;
-        player.OnCrouched -= PlayCrouchSound;
+        player.Movement.OnStep -= PlayStepSound;
+        player.Movement.OnLand -= PlayLandSound;
+        player.Movement.OnHighLand -= PlayHighLandSound;
+        player.Movement.OnJumped -= PlayJumpSound;
+        // player.OnCrouched -= PlayCrouchSound;
     }
 
     public void PlayStepSound()
